@@ -3,7 +3,7 @@ local App = {
     title = 'Grid System',
     author = '',
     version = '1.0.0',
-    require = 'math media'
+    require = 'math'
 }
 
 local ClimaTV = {
