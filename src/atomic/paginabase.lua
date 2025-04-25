@@ -16,9 +16,9 @@ end
 
 function PaginaBase:render(std)
     std.draw.color(std.color.white)
-    std.text.put(10, 10, self.cabecalho, 1)
+    std.text.put(3, 0, self.cabecalho, 1)
     self.formulario:render(std, 10, 40)
-    std.text.put(10, 200, self.rodape, 1)
+    std.text.put(3, 5, self.rodape, 1)
 end
 
 return PaginaBase

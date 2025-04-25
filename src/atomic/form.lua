@@ -15,7 +15,7 @@ end
 
 function FormularioContato:render(std, x, y)
     std.draw.color(std.color.white)
-    std.text.put(x, y, self.titulo, 1)
+    std.text.put(3, 12, self.titulo, 1)
     self.campo:render(std, x, y + 20)
 end
 

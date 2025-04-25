@@ -1,5 +1,5 @@
 -- main.lua
-local PaginaBase = require("PaginaBase")
+local PaginaBase = require("src/atomic/paginabase")
 
 local function init(std, data)
    data.pagina = PaginaBase:new()
