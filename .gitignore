@@ -1,2 +1,3 @@
-cli.lua
+cli*.lua
 dist/
+assets
