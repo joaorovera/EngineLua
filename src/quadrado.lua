@@ -1,8 +1,8 @@
 local function init(std, data)
     data.state = 1
     data.square = {x = data.width / 2,y = data.height / 2,size = 50,speed = 10}
-    data.squareKiller = {color = std.color.gray, x = data.square.x-100, y = 0, speed = 18}
-    data.squareKiller2= {color = std.color.purple, x = data.square.x-100, y = data.height, speed = 15}
+    data.squareKiller = {color = std.color.black, x = data.square.x-100, y = 0, speed = 8}
+    data.squareKiller2= {color = std.color.purple, x = data.square.x + 220, y = data.height, speed = 8}
     local spacing = 100
     data.squareOptions = {
     {color = std.color.gray, x = data.square.x - 4 * spacing, y = data.square.y},
@@ -56,7 +56,6 @@ end
 local function loop(std, data)
     menu_navigation(std, data)
     if data.state == 2 then
-
         --control square navigation
         data.square.y = std.math.clamp(data.square.y + (std.key.axis.y * data.square.speed), 0, (data.height - data.square.size))
         data.square.x = std.math.clamp(data.square.x + (std.key.axis.x * data.square.speed), 0, (data.width - data.square.size))
@@ -65,25 +64,24 @@ local function loop(std, data)
         data.squareKiller.y = data.squareKiller.y + data.squareKiller.speed
         if data.squareKiller.y > data.height then
             data.squareKiller.y = data.height
-            data.squareKiller.speed = -5
+            data.squareKiller.speed = -8
         elseif data.squareKiller.y < 0 then
             data.squareKiller.y = 0
-            data.squareKiller.speed = 5 
+            data.squareKiller.speed = 8 
         end
 
         -- Move the square killer 2 up and down
         data.squareKiller2.y = data.squareKiller2.y + data.squareKiller2.speed
         if data.squareKiller2.y > data.height then
             data.squareKiller2.y = data.height
-            data.squareKiller2.speed = -5
+            data.squareKiller2.speed = -8
         elseif data.squareKiller2.y < 0 then
             data.squareKiller2.y = 0
-            data.squareKiller2.speed = 5 
+            data.squareKiller2.speed = 8 
         end
     end
 end
 local function draw(std, data)
-    std.draw.clear(std.color.black)
     if data.state == 1 then
         for i, option in ipairs(data.squareOptions_aux) do
             if i == 5 then
@@ -99,8 +97,10 @@ local function draw(std, data)
         std.draw.rect(0,1100,0,180,720)
         std.draw.color(data.squareKiller.color)
         std.draw.rect(0,data.squareKiller.x,data.squareKiller.y,data.square.size,data.square.size)
-        std.draw.rect(0,data.squareKiller.x + 160,data.squareKiller.y,data.square.size,data.square.size)
-        std.draw.rect(0,data.squareKiller.x + 320,data.squareKiller.y,data.square.size,data.square.size)
+        std.draw.rect(0,data.squareKiller.x + 200,data.squareKiller.y,data.square.size,data.square.size)
+        std.draw.color(data.squareKiller2.color)
+        std.draw.rect(0,data.squareKiller2.x,data.squareKiller2.y,data.square.size,data.square.size)
+        std.draw.rect(0,data.squareKiller2.x - 240,data.squareKiller2.y,data.square.size,data.square.size)
         std.draw.color(std.color.white)
         std.text.put(1,1,"Press Enter to choose your skin again",1)
         std.draw.color(data.square.color)
